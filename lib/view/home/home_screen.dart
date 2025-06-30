@@ -27,12 +27,12 @@ class _HomeScreenState extends State<HomeScreen> {
     return Consumer<UserProvider>(builder: (context, userConsumer, child) {
       return Scaffold(
         appBar: AppBar(
-          title: Text("Home screen"),
+          title:const Text("Home screen"),
           centerTitle: true,
           backgroundColor: Colors.blue,
         ),
         body: userConsumer.isFetchPetsLoading
-            ? Center(
+            ?const Center(
                 child: CircularProgressIndicator(),
               )
             : userConsumer.petList.isNotEmpty
@@ -45,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             padding: const EdgeInsets.all(8.0),
                             child: Row(
                               children: [
-                                Text(
+                              const  Text(
                                   "Filtered by friendly",
                                   style: TextStyle(fontSize: 20),
                                 ),
@@ -85,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                   )
-                : Center(
+                :const Center(
                     child: Text(
                       "Something went wrong",
                     ),
@@ -95,12 +95,12 @@ class _HomeScreenState extends State<HomeScreen> {
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (ctx) {
-                  return AdoptionFormScreen();
+                  return const AdoptionFormScreen();
                 },
               ),
             );
           },
-          child: Text("Add "),
+          child:const Text("Add "),
         ),
       );
     });

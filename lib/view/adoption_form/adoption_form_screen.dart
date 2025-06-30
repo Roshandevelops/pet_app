@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pet_app/controller/user_provider.dart';
 import 'package:pet_app/model/adoption_model/adoption_model.dart';
-import 'package:pet_app/model/pet_model.dart';
 import 'package:pet_app/widget/constants.dart';
 import 'package:provider/provider.dart';
 
@@ -61,7 +60,7 @@ class _AdoptionFormScreenState extends State<AdoptionFormScreen> {
               },
               child: const Text("Save"),
             ),
-            SizedBox(height: 20),
+          const  SizedBox(height: 20),
             Expanded(
                 child: Consumer<UserProvider>(
               builder: (context, userConsumer, child) => userConsumer
@@ -90,7 +89,7 @@ class _AdoptionFormScreenState extends State<AdoptionFormScreen> {
                         ));
                       },
                     )
-                  : Text('No pets adopted'),
+                  :const Text('No pets adopted'),
             ))
           ],
         ),
