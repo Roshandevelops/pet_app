@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pet_app/controller/user_provider.dart';
+import 'package:pet_app/view/adoption_form/adoption_form_screen.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -25,6 +26,11 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Consumer<UserProvider>(builder: (context, userConsumer, child) {
       return Scaffold(
+        appBar: AppBar(
+          title: Text("Home screen"),
+          centerTitle: true,
+          backgroundColor: Colors.blue,
+        ),
         body: userConsumer.isFetchPetsLoading
             ? Center(
                 child: CircularProgressIndicator(),
@@ -35,23 +41,26 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: SafeArea(
                       child: Column(
                         children: [
-                          Row(
-                            children: [
-                              Text(
-                                "Filtered by friendly",
-                                style: TextStyle(fontSize: 20),
-                              ),
-                              Flexible(
-                                child: Checkbox(
-                                  value: userConsumer.isFilterApplied,
-                                  onChanged: (value) async {
-                                    Provider.of<UserProvider>(context,
-                                            listen: false)
-                                        .filterPets();
-                                  },
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              children: [
+                                Text(
+                                  "Filtered by friendly",
+                                  style: TextStyle(fontSize: 20),
                                 ),
-                              ),
-                            ],
+                                Flexible(
+                                  child: Checkbox(
+                                    value: userConsumer.isFilterApplied,
+                                    onChanged: (value) async {
+                                      Provider.of<UserProvider>(context,
+                                              listen: false)
+                                          .filterPets();
+                                    },
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                           Expanded(
                             child: ListView.builder(
@@ -81,6 +90,18 @@ class _HomeScreenState extends State<HomeScreen> {
                       "Something went wrong",
                     ),
                   ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (ctx) {
+                  return AdoptionFormScreen();
+                },
+              ),
+            );
+          },
+          child: Text("Add "),
+        ),
       );
     });
   }
