@@ -1,18 +1,19 @@
 import 'package:hive_flutter/adapters.dart';
+part 'adoption_model.g.dart';
+
 
 @HiveType(typeId: 1)
 class AdoptionModel {
-
-  @HiveField(1)
+  @HiveField(0)
   final String? name;
 
-  @HiveField(2)
+  @HiveField(1)
   final int? age;
 
-  @HiveField(3)
+  @HiveField(2)
   final String? gender;
 
-  @HiveField(4)
+  @HiveField(3)
   final String? noOfPets;
 
   AdoptionModel({

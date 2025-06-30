@@ -15,7 +15,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback(
       (_) async {
-        await Provider.of<UserProvider>(context, listen: false).getData();
+        await Provider.of<UserProvider>(context, listen: false).getAllPets();
       },
     );
 
